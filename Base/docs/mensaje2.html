@@ -1,0 +1,77 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block contenido_que_cambia %}
+
+
+
+
+{% if mensaje %}
+
+<h2 class="featurette-heading fw-normal lh-1">Mensajes enviados: <span class="text-body-secondary"></span></h2>
+
+{% for dato in mensaje %}
+
+<hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h5>
+            Enviado a: <p class="lead">{{dato.receptor}}</p>
+        </h5>
+      </div>
+      <div class="col-md-5">
+        <h5>
+            Mensaje: <p class="lead">{{dato.texto}}</p>
+        </h5>
+      </div>
+    </div>
+{% endfor %}
+{% else %}
+
+<h2 class="featurette-heading fw-normal lh-1">No hay mensajes enviados: <span class="text-body-secondary"></span></h2>
+
+<hr class="featurette-divider">
+
+{% endif %}
+
+
+
+
+
+{% if mesaje %}
+
+<h2 class="featurette-heading fw-normal lh-1">Mensajes recibidos: <span class="text-body-secondary"></span></h2>
+
+{% for dato in mesaje %}
+
+<hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h5>
+            Enviado por: <p class="lead">{{dato.emisor}}</p>
+        </h5>
+      </div>
+      <div class="col-md-5">
+        <h5>
+            Mensaje: <p class="lead">{{dato.texto}}</p>
+        </h5>
+      </div>
+      <div class="col-md-5">
+        <a class="btn btn-danger" href="{% url 'mensajes' %}">Responder</a>
+      </div>
+    </div>
+{% endfor %}
+{% else %}
+
+<h2 class="featurette-heading fw-normal lh-1">No hay mensajes recibidos: <span class="text-body-secondary"></span></h2>
+
+<hr class="featurette-divider">
+
+{% endif %}
+
+<hr class="featurette-divider">
+
+{% endblock %}

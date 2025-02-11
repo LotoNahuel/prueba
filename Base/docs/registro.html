@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block contenido_que_cambia %}
+
+<h2 class="featurette-heading fw-normal lh-1">Registro</h2>
+
+<h3>{{ mensaje }}</h3>
+
+<hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <form action="{% url 'registro' %}" method="POST">
+        <table>
+          {{ form }}
+          {% csrf_token %}
+        </table>
+        <h3>
+          <input type="submit" value="Crear usuario">
+        </h3>
+      </form>
+    </div>
+  </div>
+
+<hr class="featurette-divider">
+
+{% endblock %}
